@@ -41,7 +41,9 @@ namespace CBChannelsTest
 
 				//Adds new document
 				Documents docs = new Documents();
-				docs.addContent(mDatabase,edittext.Text,"Channel2"); 
+
+				string[] channel = {"Channel1"};
+				docs.addContent(mDatabase,edittext.Text,channel); 
 
 			};
 			setupLiveQuery();	
@@ -75,9 +77,10 @@ namespace CBChannelsTest
 			var push = mDatabase.CreatePushReplication (url);
 			var pull = mDatabase.CreatePullReplication (url);
 
-			var channel = new List<string> () { "Channel1" };  
-
+			var channel = new List<string> () { "Channel2" };  
+			pull.Filter="sync_gateway/bychannel";
 			pull.Channels = channel;
+
 
 			push.Continuous = true;
 			pull.Continuous = true;

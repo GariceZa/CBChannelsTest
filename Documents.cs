@@ -11,7 +11,7 @@ namespace CBChannelsTest
 		private const string docType = "message";
 		private const string viewName = "messages";
 
-		public void addContent(Database mDatabase,String mMessage,String mChannel)
+		public void addContent(Database mDatabase,string mMessage,string[] mChannel)
 		{
 			var docProperties = new Dictionary<string,object> {
 				{"type",docType},
